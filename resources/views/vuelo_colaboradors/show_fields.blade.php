@@ -1,18 +1,18 @@
 <!-- Idvuelo Field -->
 <div class="col-sm-12">
-    {!! Form::label('idvuelo', 'Idvuelo:') !!}
-    <p>{{ $vueloColaborador->idvuelo }}</p>
+    {!! Form::label('idvuelo', 'Vuelo (Origen-Destino):') !!}
+    <p>{{ $vueloColaborador->vuelo }}</p>
 </div>
 
 <!-- Idcolaborador Field -->
 <div class="col-sm-12">
-    {!! Form::label('idcolaborador', 'Idcolaborador:') !!}
-    <p>{{ $vueloColaborador->idcolaborador }}</p>
+    {!! Form::label('idcolaborador', 'Colaborador:') !!}
+    <p>{{ $vueloColaborador->colaborador }}</p>
 </div>
 
 <!-- Cargoasignado Field -->
 <div class="col-sm-12">
-    {!! Form::label('cargoAsignado', 'Cargoasignado:') !!}
+    {!! Form::label('cargoAsignado', 'Cargoa signado:') !!}
     <p>{{ $vueloColaborador->cargoAsignado }}</p>
 </div>
 

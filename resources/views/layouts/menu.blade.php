@@ -66,28 +66,28 @@
 
 <li class="nav-item">
     <a href="{{ route('colaboradors.index') }}" class="nav-link {{ Request::is('colaboradors*') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-home"></i>
+        <i class="nav-icon fas fa-user-friends"></i>
         <p>Colaboradores</p>
     </a>
 </li>
 
 <li class="nav-item">
     <a href="{{ route('beneficios.index') }}" class="nav-link {{ Request::is('beneficios*') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-home"></i>
+        <i class="nav-icon fas fa-list-alt"></i>
         <p>Beneficios</p>
     </a>
 </li>
 
 <li class="nav-item">
     <a href="{{ route('reservacions.index') }}" class="nav-link {{ Request::is('reservacions*') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-home"></i>
+        <i class="nav-icon fas fa-address-book"></i>
         <p>Reservaciones</p>
     </a>
 </li>
 
 <li class="nav-item">
     <a href="{{ route('vuelo_colaboradors.index') }}" class="nav-link {{ Request::is('vueloColaboradors*') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-home"></i>
+        <i class="nav-icon fas fa-plane-arrival"></i>
         <p>Vuelo Colaboradores</p>
     </a>
 </li>

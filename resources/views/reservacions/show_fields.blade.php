@@ -1,7 +1,7 @@
 <!-- Idpasajero Field -->
 <div class="col-sm-12">
-    {!! Form::label('idpasajero', 'Idpasajero:') !!}
-    <p>{{ $reservacion->idpasajero }}</p>
+    {!! Form::label('idpasajero', 'Pasajero:') !!}
+    <p>{{ $reservacion->pasajero }}</p>
 </div>
 
 <!-- Asiento Field -->
@@ -12,8 +12,8 @@
 
 <!-- Idclase Field -->
 <div class="col-sm-12">
-    {!! Form::label('idclase', 'Idclase:') !!}
-    <p>{{ $reservacion->idclase }}</p>
+    {!! Form::label('idclase', 'Clase:') !!}
+    <p>{{ $reservacion->clase }}</p>
 </div>
 
 <!-- Estado Field -->
@@ -24,8 +24,8 @@
 
 <!-- Idpaquete Field -->
 <div class="col-sm-12">
-    {!! Form::label('idpaquete', 'Idpaquete:') !!}
-    <p>{{ $reservacion->idpaquete }}</p>
+    {!! Form::label('idpaquete', 'Paquete:') !!}
+    <p>{{ $reservacion->paquete }}</p>
 </div>
 
 <!-- Fecha Reserva Field -->

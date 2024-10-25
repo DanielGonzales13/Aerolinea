@@ -11,7 +11,7 @@ use Flash;
 use Response;
 use DB;
 use app\Models\departamento;
-use app\Models\municipio;
+use App\Models\municipio;
 use app\Models\aeropuerto;
 
 class aeropuertoController extends AppBaseController
@@ -138,4 +138,18 @@ class aeropuertoController extends AppBaseController
 
         return redirect(route('aeropuertos.index'));
     }
+
+    public function getMunicipios($iddepto)
+    {
+        try {
+            // Obtén los municipios que coincidan con el iddepto
+            $municipios = municipio::where('iddepto', $iddepto)->pluck('municipio', 'id');
+            return response()->json($municipios);
+        } catch (\Exception $e) {
+            // Registra el error en el log y devuelve un error de respuesta
+            \Log::error('Error al obtener municipios: '.$e->getMessage());
+            return response()->json(['error' => 'No se pudieron cargar los municipios'], 500);
+        }
+    }
+
 }

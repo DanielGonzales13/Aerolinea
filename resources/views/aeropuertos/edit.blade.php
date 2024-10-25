@@ -36,4 +36,28 @@
 
         </div>
     </div>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        // Detecta cambios en el campo "Departamento"
+        $('#iddepto').change(function() {
+            var iddepto = $(this).val(); // Obtiene el ID del departamento seleccionado
+            console.log("cambio");
+            // Llama a la ruta para obtener los municipios del departamento seleccionado
+            $.ajax({
+                url: '/aeropuertos/municipios/' + iddepto,
+                type: 'GET',
+                success: function(data) {
+                    // Limpia el campo "Municipio" antes de cargar los nuevos municipios
+                    $('#idmupio').empty();
+                    
+                    // Agrega cada municipio como opción en el selector
+                    $.each(data, function(key, value) {
+                        $('#idmupio').append('<option value="' + key + '">' + value + '</option>');
+                    });
+                }
+            });
+        });
+    });
+</script>
+
 @endsection

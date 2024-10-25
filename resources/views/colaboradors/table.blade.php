@@ -3,18 +3,18 @@
         <table class="table" id="colaboradors-table">
             <thead>
             <tr>
-                <th>Primernombre</th>
-                <th>Segundonombre</th>
-                <th>Primerapellido</th>
-                <th>Segundoapellido</th>
+                <th>Primer nombre</th>
+                <th>Segundo nombre</th>
+                <th>Primer apellido</th>
+                <th>Segundo apellido</th>
                 <th>Dpi</th>
                 <th>Nit</th>
-                <th>Fechanacimiento</th>
+                <th>Fecha de nacimiento</th>
                 <th>Correo</th>
                 <th>Telefono</th>
                 <th>Genero</th>
                 <th>Puesto</th>
-                <th>Estad</th>
+                <th>Estado</th>
                 <th colspan="3">Action</th>
             </tr>
             </thead>

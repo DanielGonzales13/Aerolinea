@@ -34,3 +34,4 @@ Route::resource('colaboradors', App\Http\Controllers\colaboradorController::clas
 Route::resource('beneficios', App\Http\Controllers\beneficioController::class);
 Route::resource('reservacions', App\Http\Controllers\reservacionController::class);
 Route::resource('vuelo_colaboradors', App\Http\Controllers\vuelo_colaboradorController::class);
+Route::get('aeropuertos/municipios/{iddepto}', [App\Http\Controllers\aeropuertoController::class, 'getMunicipios']);

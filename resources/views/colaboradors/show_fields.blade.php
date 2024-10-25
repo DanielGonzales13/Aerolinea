@@ -1,24 +1,24 @@
 <!-- Primernombre Field -->
 <div class="col-sm-12">
-    {!! Form::label('primerNombre', 'Primernombre:') !!}
+    {!! Form::label('primerNombre', 'Primer nombre:') !!}
     <p>{{ $colaborador->primerNombre }}</p>
 </div>
 
 <!-- Segundonombre Field -->
 <div class="col-sm-12">
-    {!! Form::label('segundoNombre', 'Segundonombre:') !!}
+    {!! Form::label('segundoNombre', 'Segundo nombre:') !!}
     <p>{{ $colaborador->segundoNombre }}</p>
 </div>
 
 <!-- Primerapellido Field -->
 <div class="col-sm-12">
-    {!! Form::label('primerApellido', 'Primerapellido:') !!}
+    {!! Form::label('primerApellido', 'Primer apellido:') !!}
     <p>{{ $colaborador->primerApellido }}</p>
 </div>
 
 <!-- Segundoapellido Field -->
 <div class="col-sm-12">
-    {!! Form::label('segundoApellido', 'Segundoapellido:') !!}
+    {!! Form::label('segundoApellido', 'Segundo apellido:') !!}
     <p>{{ $colaborador->segundoApellido }}</p>
 </div>
 
@@ -36,7 +36,7 @@
 
 <!-- Fechanacimiento Field -->
 <div class="col-sm-12">
-    {!! Form::label('FechaNacimiento', 'Fechanacimiento:') !!}
+    {!! Form::label('FechaNacimiento', 'Fecha de nacimiento:') !!}
     <p>{{ $colaborador->FechaNacimiento }}</p>
 </div>
 
@@ -66,7 +66,7 @@
 
 <!-- Estad Field -->
 <div class="col-sm-12">
-    {!! Form::label('estad', 'Estad:') !!}
+    {!! Form::label('estad', 'Estado:') !!}
     <p>{{ $colaborador->estad }}</p>
 </div>
 

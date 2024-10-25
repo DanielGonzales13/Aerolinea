@@ -19,7 +19,7 @@
 
         <div class="card">
 
-            {!! Form::model($vueloColaborador, ['route' => ['vueloColaboradors.update', $vueloColaborador->id], 'method' => 'patch']) !!}
+            {!! Form::model($vueloColaborador, ['route' => ['vuelo_colaboradors.update', $vueloColaborador->id], 'method' => 'patch']) !!}
 
             <div class="card-body">
                 <div class="row">

@@ -3,7 +3,7 @@
         <table class="table" id="beneficios-table">
             <thead>
             <tr>
-                <th>Idclase</th>
+                <th>Clase</th>
                 <th>Descripcion</th>
                 <th colspan="3">Action</th>
             </tr>
@@ -11,7 +11,7 @@
             <tbody>
             @foreach($beneficios as $beneficio)
                 <tr>
-                    <td>{{ $beneficio->idclase }}</td>
+                    <td>{{ $beneficio->clase }}</td>
                     <td>{{ $beneficio->descripcion }}</td>
                     <td  style="width: 120px">
                         {!! Form::open(['route' => ['beneficios.destroy', $beneficio->id], 'method' => 'delete']) !!}

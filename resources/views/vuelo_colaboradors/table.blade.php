@@ -3,9 +3,9 @@
         <table class="table" id="vuelo_colaboradors-table">
             <thead>
             <tr>
-                <th>Idvuelo</th>
-                <th>Idcolaborador</th>
-                <th>Cargoasignado</th>
+                <th>Vuelo (Origen-Destino)</th>
+                <th>Colaborador</th>
+                <th>Cargo asignado</th>
                 <th>Estado</th>
                 <th colspan="3">Action</th>
             </tr>
@@ -13,18 +13,18 @@
             <tbody>
             @foreach($vueloColaboradors as $vueloColaborador)
                 <tr>
-                    <td>{{ $vueloColaborador->idvuelo }}</td>
-                    <td>{{ $vueloColaborador->idcolaborador }}</td>
+                    <td>{{ $vueloColaborador->vuelo }}</td>
+                    <td>{{ $vueloColaborador->colaborador }}</td>
                     <td>{{ $vueloColaborador->cargoAsignado }}</td>
                     <td>{{ $vueloColaborador->estado }}</td>
                     <td  style="width: 120px">
-                        {!! Form::open(['route' => ['vueloColaboradors.destroy', $vueloColaborador->id], 'method' => 'delete']) !!}
+                        {!! Form::open(['route' => ['vuelo_colaboradors.destroy', $vueloColaborador->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>
                             <a href="{{ route('vuelo_colaboradors.show', [$vueloColaborador->id]) }}"
                                class='btn btn-primary btn-xs'>
                                 <i class="far fa-eye"></i>
                             </a>
-                            <a href="{{ route('vueloColaboradors.edit', [$vueloColaborador->id]) }}"
+                            <a href="{{ route('vuelo_colaboradors.edit', [$vueloColaborador->id]) }}"
                                class='btn btn-success btn-xs'>
                                 <i class="far fa-edit"></i>
                             </a>

@@ -1,7 +1,7 @@
 <!-- Idclase Field -->
 <div class="col-sm-12">
-    {!! Form::label('idclase', 'Idclase:') !!}
-    <p>{{ $beneficio->idclase }}</p>
+    {!! Form::label('idclase', 'Clase:') !!}
+    <p>{{ $beneficio->clase }}</p>
 </div>
 
 <!-- Descripcion Field -->

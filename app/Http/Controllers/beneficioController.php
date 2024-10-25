@@ -8,6 +8,9 @@ use App\Http\Controllers\AppBaseController;
 use App\Repositories\beneficioRepository;
 use Illuminate\Http\Request;
 use Flash;
+use Response;
+use DB;
+use app\Models\beneficio;
 
 class beneficioController extends AppBaseController
 {
@@ -24,10 +27,14 @@ class beneficioController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $beneficios = $this->beneficioRepository->paginate(10);
+        $beneficios = DB::table('beneficios')
+        ->join('clases', 'beneficios.idclase', '=', 'clases.id')
+        ->select('beneficios.id', 'clases.descripcion as clase', 'beneficios.descripcion')
+        ->paginate(10);
 
         return view('beneficios.index')
-            ->with('beneficios', $beneficios);
+            ->with('beneficios', $beneficios);   
+
     }
 
     /**
@@ -57,7 +64,10 @@ class beneficioController extends AppBaseController
      */
     public function show($id)
     {
-        $beneficio = $this->beneficioRepository->find($id);
+        $beneficio = beneficio::where('beneficios.id', $id)
+        ->join('clases', 'beneficios.idclase', '=', 'clases.id')
+        ->select('beneficios.id', 'clases.descripcion as clase', 'beneficios.descripcion', 'beneficios.created_at', 'beneficios.updated_at')
+        ->first();
 
         if (empty($beneficio)) {
             Flash::error('Beneficio not found');

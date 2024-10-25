@@ -111,6 +111,58 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-4">
+                    <div class="small-box bg-danger" onclick="window.location.href=`{{route('colaboradors.index')}}`">
+                        <div class="inner">
+                            <h3>Colaboradores</h3>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <div class="small-box-footer">
+                            <i class="fas fa-arrow-circle-right "></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="small-box bg-primary" onclick="window.location.href=`{{route('beneficios.index')}}`">
+                        <div class="inner">
+                            <h3>Beneficios</h3>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-list-alt"></i>
+                        </div>
+                        <div class="small-box-footer">
+                            <i class="fas fa-arrow-circle-right "></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="small-box bg-default" onclick="window.location.href=`{{route('reservacions.index')}}`">
+                        <div class="inner">
+                            <h3>Reservaciones</h3>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-address-book"></i>
+                        </div>
+                        <div class="small-box-footer">
+                            <i class="fas fa-arrow-circle-right "></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="small-box bg-dark" onclick="window.location.href=`{{route('vuelo_colaboradors.index')}}`">
+                        <div class="inner">
+                            <h3>Vuelo de Colaboradores</h3>
+                        </div>
+                        <div class="icon text-white">
+                            <i class="fas fa-plane-arrival"></i>
+                        </div>
+                        <div class="small-box-footer">
+                            <i class="fas fa-arrow-circle-right "></i>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

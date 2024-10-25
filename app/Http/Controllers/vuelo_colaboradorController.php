@@ -8,6 +8,9 @@ use App\Http\Controllers\AppBaseController;
 use App\Repositories\vuelo_colaboradorRepository;
 use Illuminate\Http\Request;
 use Flash;
+use Response;
+use DB;
+use app\Models\vuelo_colaborador;
 
 class vuelo_colaboradorController extends AppBaseController
 {
@@ -24,7 +27,13 @@ class vuelo_colaboradorController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $vueloColaboradors = $this->vueloColaboradorRepository->paginate(10);
+        $vueloColaboradors = DB::table('vuelo_colaboradors')
+        ->join('vuelos', 'vuelo_colaboradors.idvuelo', '=', 'vuelos.id')
+        ->join('aeropuertos as aeropuerto_origen', 'vuelos.idaeropuerto_origen', '=', 'aeropuerto_origen.id')
+        ->join('aeropuertos as aeropuerto_destino', 'vuelos.idaeropuerto_destino', '=', 'aeropuerto_destino.id')
+        ->join('colaboradors', 'vuelo_colaboradors.idcolaborador', '=', 'colaboradors.id')
+        ->select('vuelo_colaboradors.id', DB::raw("CONCAT(aeropuerto_origen.descripcion, ' - ', aeropuerto_destino.descripcion) as vuelo"),  DB::raw("CONCAT(colaboradors.primerNombre, ' ', colaboradors.segundoNombre, ' ', colaboradors.primerApellido, ' ', colaboradors.segundoApellido) as colaborador"), 'vuelo_colaboradors.cargoAsignado', 'vuelo_colaboradors.estado')
+        ->paginate(10);
 
         return view('vuelo_colaboradors.index')
             ->with('vueloColaboradors', $vueloColaboradors);
@@ -49,7 +58,7 @@ class vuelo_colaboradorController extends AppBaseController
 
         Flash::success('Vuelo Colaborador saved successfully.');
 
-        return redirect(route('vueloColaboradors.index'));
+        return redirect(route('vuelo_colaboradors.index'));
     }
 
     /**
@@ -57,12 +66,18 @@ class vuelo_colaboradorController extends AppBaseController
      */
     public function show($id)
     {
-        $vueloColaborador = $this->vueloColaboradorRepository->find($id);
+        $vueloColaborador = vuelo_colaborador::where('vuelo_colaboradors.id', $id)
+        ->join('vuelos', 'vuelo_colaboradors.idvuelo', '=', 'vuelos.id')
+        ->join('aeropuertos as aeropuerto_origen', 'vuelos.idaeropuerto_origen', '=', 'aeropuerto_origen.id')
+        ->join('aeropuertos as aeropuerto_destino', 'vuelos.idaeropuerto_destino', '=', 'aeropuerto_destino.id')
+        ->join('colaboradors', 'vuelo_colaboradors.idcolaborador', '=', 'colaboradors.id')
+        ->select('vuelo_colaboradors.id', DB::raw("CONCAT(aeropuerto_origen.descripcion, ' - ', aeropuerto_destino.descripcion) as vuelo"),  DB::raw("CONCAT(colaboradors.primerNombre, ' ', colaboradors.segundoNombre, ' ', colaboradors.primerApellido, ' ', colaboradors.segundoApellido) as colaborador"), 'vuelo_colaboradors.cargoAsignado', 'vuelo_colaboradors.estado','vuelo_colaboradors.created_at', 'vuelo_colaboradors.updated_at')
+        ->first();
 
         if (empty($vueloColaborador)) {
             Flash::error('Vuelo Colaborador not found');
 
-            return redirect(route('vueloColaboradors.index'));
+            return redirect(route('vuelo_colaboradors.index'));
         }
 
         return view('vuelo_colaboradors.show')->with('vueloColaborador', $vueloColaborador);
@@ -78,7 +93,7 @@ class vuelo_colaboradorController extends AppBaseController
         if (empty($vueloColaborador)) {
             Flash::error('Vuelo Colaborador not found');
 
-            return redirect(route('vueloColaboradors.index'));
+            return redirect(route('vuelo_colaboradors.index'));
         }
 
         return view('vuelo_colaboradors.edit')->with('vueloColaborador', $vueloColaborador);
@@ -94,14 +109,14 @@ class vuelo_colaboradorController extends AppBaseController
         if (empty($vueloColaborador)) {
             Flash::error('Vuelo Colaborador not found');
 
-            return redirect(route('vueloColaboradors.index'));
+            return redirect(route('vuelo_colaboradors.index'));
         }
 
         $vueloColaborador = $this->vueloColaboradorRepository->update($request->all(), $id);
 
         Flash::success('Vuelo Colaborador updated successfully.');
 
-        return redirect(route('vueloColaboradors.index'));
+        return redirect(route('vuelo_colaboradors.index'));
     }
 
     /**
@@ -116,13 +131,13 @@ class vuelo_colaboradorController extends AppBaseController
         if (empty($vueloColaborador)) {
             Flash::error('Vuelo Colaborador not found');
 
-            return redirect(route('vueloColaboradors.index'));
+            return redirect(route('vuelo_colaboradors.index'));
         }
 
         $this->vueloColaboradorRepository->delete($id);
 
         Flash::success('Vuelo Colaborador deleted successfully.');
 
-        return redirect(route('vueloColaboradors.index'));
+        return redirect(route('vuelo_colaboradors.index'));
     }
 }

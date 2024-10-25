@@ -1,7 +1,7 @@
 <!-- Idclase Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('idclase', 'Idclase:') !!}
-    {!! Form::select('idclase', ['descripcion' => 'descripcion', 'id' => 'id'], null, ['class' => 'form-control custom-select']) !!}
+    {!! Form::label('Clase', 'Clase:') !!}
+    {!! Form::select('idclase', $claseItems, null, ['class' => 'form-control custom-select']) !!}
 </div>
 
 <!-- Descripcion Field -->

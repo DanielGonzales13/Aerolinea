@@ -19,11 +19,10 @@
 <!-- Iddepto Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Departamento', 'Departamento:') !!}
-    {!! Form::select('iddepto',$departamentoItems , null, ['class' => 'form-control custom-select']) !!}
-</div>
+    {!! Form::select('iddepto', ['' => 'Seleccionar Departamento'] + $departamentoItems, null, ['class' => 'form-control custom-select', 'id' => 'iddepto']) !!}</div>
 
 <!-- Idmupio Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Municipio', 'Municipio:') !!}
-    {!! Form::select('idmupio', $municipioItems, null, ['class' => 'form-control custom-select']) !!}
+    {!! Form::select('idmupio', $municipioItems, null, ['class' => 'form-control custom-select', 'id' => 'idmupio']) !!}
 </div>

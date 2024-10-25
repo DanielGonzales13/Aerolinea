@@ -3,11 +3,11 @@
         <table class="table" id="reservacions-table">
             <thead>
             <tr>
-                <th>Idpasajero</th>
+                <th>Pasajero</th>
                 <th>Asiento</th>
-                <th>Idclase</th>
+                <th>Clase</th>
                 <th>Estado</th>
-                <th>Idpaquete</th>
+                <th>Paquete</th>
                 <th>Fecha Reserva</th>
                 <th colspan="3">Action</th>
             </tr>
@@ -15,11 +15,11 @@
             <tbody>
             @foreach($reservacions as $reservacion)
                 <tr>
-                    <td>{{ $reservacion->idpasajero }}</td>
+                    <td>{{ $reservacion->pasajero }}</td>
                     <td>{{ $reservacion->asiento }}</td>
-                    <td>{{ $reservacion->idclase }}</td>
+                    <td>{{ $reservacion->clase }}</td>
                     <td>{{ $reservacion->estado }}</td>
-                    <td>{{ $reservacion->idpaquete }}</td>
+                    <td>{{ $reservacion->paquete }}</td>
                     <td>{{ $reservacion->fecha_reserva }}</td>
                     <td  style="width: 120px">
                         {!! Form::open(['route' => ['reservacions.destroy', $reservacion->id], 'method' => 'delete']) !!}

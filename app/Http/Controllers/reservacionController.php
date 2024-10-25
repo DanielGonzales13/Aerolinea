@@ -8,6 +8,9 @@ use App\Http\Controllers\AppBaseController;
 use App\Repositories\reservacionRepository;
 use Illuminate\Http\Request;
 use Flash;
+use DB;
+use Response;
+use app\Models\reservacion;
 
 class reservacionController extends AppBaseController
 {
@@ -24,7 +27,12 @@ class reservacionController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $reservacions = $this->reservacionRepository->paginate(10);
+        $reservacions = DB::table('reservacions')
+        ->join('pasajeros', 'reservacions.idpasajero', '=', 'pasajeros.id')
+        ->join('clases', 'reservacions.idclase', '=', 'clases.id')
+        ->join('paquetes', 'reservacions.idpaquete', '=', 'paquetes.id')
+        ->select('reservacions.id',DB::raw("CONCAT(pasajeros.primerNombre, ' ', pasajeros.segundoNombre, ' ', pasajeros.primerApellido, ' ', pasajeros.segundoApellido) as pasajero"),'reservacions.asiento','clases.descripcion as clase','reservacions.estado','paquetes.descripcion as paquete', 'reservacions.fecha_reserva')->paginate(10);
+
 
         return view('reservacions.index')
             ->with('reservacions', $reservacions);
@@ -57,7 +65,11 @@ class reservacionController extends AppBaseController
      */
     public function show($id)
     {
-        $reservacion = $this->reservacionRepository->find($id);
+        $reservacion = reservacion::where('reservacions.id', $id)
+        ->join('pasajeros', 'reservacions.idpasajero', '=', 'pasajeros.id')
+        ->join('clases', 'reservacions.idclase', '=', 'clases.id')
+        ->join('paquetes', 'reservacions.idpaquete', '=', 'paquetes.id')
+        ->select('reservacions.id',DB::raw("CONCAT(pasajeros.primerNombre, ' ', pasajeros.segundoNombre, ' ', pasajeros.primerApellido, ' ', pasajeros.segundoApellido) as pasajero"),'reservacions.asiento','clases.descripcion as clase','reservacions.estado','paquetes.descripcion as paquete', 'reservacions.fecha_reserva', 'reservacions.created_at','reservacions.updated_at')->first();
 
         if (empty($reservacion)) {
             Flash::error('Reservacion not found');
